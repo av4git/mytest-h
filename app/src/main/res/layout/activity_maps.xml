@@ -1,8 +1,45 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.andrey.myhw_api15_403.MapsActivity" />
+    android:weightSum="1">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="442dp"
+        tools:context="com.andrey.myhw_api15_403.MapsActivity"
+        android:layout_weight="0.28" />
+
+    <TextView
+        android:id="@+id/tvTitleGPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/provider_gps"
+        android:textSize="30sp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvEnabledGPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp">
+    </TextView>
+    <TextView
+        android:id="@+id/tvStatusGPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp">
+    </TextView>
+    <TextView
+        android:id="@+id/tvLocationGPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp">
+    </TextView>
+</LinearLayout>
+
+
