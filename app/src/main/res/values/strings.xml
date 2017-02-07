@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MyHW_api15_4.0.3</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps">mytest-h</string>
+    <string name="provider_gps">GPS</string>
+    <string name="provider_network">Network</string>
+    <string name="location_settings">Location settings</string>
 </resources>
