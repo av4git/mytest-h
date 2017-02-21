@@ -1,5 +1,9 @@
 package com.andrey.myhw_api15_403;
 
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -52,5 +56,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .add(new LatLng(48.60, 35.15))
                 .add(new LatLng(48.55, 35.20));
         Polyline polyLine = mMap.addPolyline(myTrack);
+
+        // Acquire a reference to the system Location Manager
+        //LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+// Define a listener that responds to location updates
+        LocationListener locationListener = new LocationListener() {
+            public void onLocationChanged(Location location) {
+                // Called when a new location is found by the network location provider.
+                //makeUseOfNewLocation(location);
+            }
+
+            public void onStatusChanged(String provider, int status, Bundle extras) {}
+
+            public void onProviderEnabled(String provider) {}
+
+            public void onProviderDisabled(String provider) {}
+        };
+
+// Register the listener with the Location Manager to receive location updates
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        LatLng sydney1 = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
+        String str = String.format(
+                "Coordinates: lat = %1$.4f, lon = %2$.4f",
+                lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
+        mMap.addMarker(new MarkerOptions().position(sydney1).title(str));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney1, 13));
+
     }
 }
