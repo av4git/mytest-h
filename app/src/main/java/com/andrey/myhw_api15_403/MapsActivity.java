@@ -84,6 +84,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
         mMap.addMarker(new MarkerOptions().position(sydney1).title(str));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney1, 13));
-
     }
 }
